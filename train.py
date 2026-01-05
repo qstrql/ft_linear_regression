@@ -73,10 +73,8 @@ def train(mileages, prices):
     norm_mileages, km_min, km_max = normalize(mileages)
     norm_prices, price_min, price_max = normalize(prices)
 
-    # m is the number of data points
     m = len(norm_mileages)
 
-    # Initialize theta0 and theta1 to 0
     theta0 = 0.0
     theta1 = 0.0
 
@@ -95,7 +93,7 @@ def train(mileages, prices):
 
         theta0 = theta0 - tmp_theta0
         theta1 = theta1 - tmp_theta1
-# Denormalize theta values to work with original scale
+
     theta0, theta1 = denormalize_theta(theta0, theta1, km_min, km_max, price_min, price_max)
 
     return theta0, theta1
