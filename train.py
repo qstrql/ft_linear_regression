@@ -68,7 +68,8 @@ def train(mileages, prices):
 
     Formulas:
     tmpθ0 = learningRate * (1/m) * Σ(estimatePrice(mileage[i]) - price[i])
-    tmpθ1 = learningRate * (1/m) * Σ((estimatePrice(mileage[i]) - price[i]) * mileage[i])
+    tmpθ1 = learningRate * (1/m) *
+            Σ((estimatePrice(mileage[i]) - price[i]) * mileage[i])
     """
     norm_mileages, km_min, km_max = normalize(mileages)
     norm_prices, price_min, price_max = normalize(prices)
@@ -83,7 +84,8 @@ def train(mileages, prices):
         sum_theta1 = 0.0
 
         for i in range(m):
-            error = estimate_price(norm_mileages[i], theta0, theta1) - norm_prices[i]
+            estimated = estimate_price(norm_mileages[i], theta0, theta1)
+            error = estimated - norm_prices[i]
 
             sum_theta0 += error
             sum_theta1 += error * norm_mileages[i]
@@ -94,7 +96,9 @@ def train(mileages, prices):
         theta0 = theta0 - tmp_theta0
         theta1 = theta1 - tmp_theta1
 
-    theta0, theta1 = denormalize_theta(theta0, theta1, km_min, km_max, price_min, price_max)
+    theta0, theta1 = denormalize_theta(
+        theta0, theta1, km_min, km_max, price_min, price_max
+    )
 
     return theta0, theta1
 
@@ -118,7 +122,7 @@ def main():
         mileages, prices = load_data('data.csv')
         theta0, theta1 = train(mileages, prices)
         save_theta(theta0, theta1)
-        print(f"Theta values saved!")
+        print("Theta values saved!")
         print(f"theta0 = {theta0}")
         print(f"theta1 = {theta1}")
     except FileNotFoundError:
