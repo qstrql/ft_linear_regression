@@ -1,4 +1,5 @@
 import json
+import math
 import os
 
 
@@ -31,6 +32,9 @@ def main():
         theta0, theta1 = load_theta()
 
         mileage = float(input("Enter a mileage: "))
+        if math.isinf(mileage) or math.isnan(mileage):
+            print("Error: Number is too large")
+            return
 
         price = estimate_price(mileage, theta0, theta1)
         print(f"Estimated price: {price}")
