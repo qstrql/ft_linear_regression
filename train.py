@@ -68,8 +68,7 @@ def train(mileages, prices):
 
     Formulas:
     tmpθ0 = learningRate * (1/m) * Σ(estimatePrice(mileage[i]) - price[i])
-    tmpθ1 = learningRate * (1/m) *
-            Σ((estimatePrice(mileage[i]) - price[i]) * mileage[i])
+    tmpθ1 = learningRate * (1/m) * Σ((estimatePrice(mileage[i]) - price[i]) * mileage[i])
     """
     norm_mileages, km_min, km_max = normalize(mileages)
     norm_prices, price_min, price_max = normalize(prices)
@@ -105,7 +104,7 @@ def train(mileages, prices):
 
 def save_theta(theta0, theta1):
     """
-    Save theta0 and theta1 to a JSON file.
+    Save theta0 and theta1 to the json file.
     """
     data = {
         'theta0': theta0,

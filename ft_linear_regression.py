@@ -5,9 +5,9 @@ import os
 
 def estimate_price(mileage, theta0, theta1):
     """
-    Calculate estimated price using linear regression formula.
+    Estimate the price of the car based on its mileage.
 
-    estimatePrice(mileage) = θ0 + (θ1 * mileage)
+    estimatePrice(mileage) = theta0 + (theta1 * mileage)
     """
     return theta0 + (theta1 * mileage)
 
@@ -27,7 +27,9 @@ def load_theta():
 
 
 def main():
-    """Main function with error handling."""
+    """
+    Load date then estimate the price of the car with error handling.
+    """
     try:
         theta0, theta1 = load_theta()
 
